@@ -1,4 +1,4 @@
-# commit-tool
+# git-commit-tool
 
 使用交互式方法帮助您生成标准提交消息 (use an interactive approach to help you generate standard submission messages)
 
@@ -9,7 +9,7 @@
 install with npm:
 
 ```bash
-npm install -g commit-tool
+npm install -g git-commit-tool
 ```
 
 ## useage
