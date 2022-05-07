@@ -10,17 +10,17 @@ const cli = cac('commit')
 // cli命令数组
 cli.commands = [
   cli
-    .command('', `commit [...Options]`)
-    .option(
-      'autoPush',
-      '是否自动提交到远程仓库,默认为false (Automatically push to remote after committing, default is false)',
-      {
-        default: false
-      }
-    )
-    .option('isGerrit', '是否是gerrit仓库,默认为false (Is gerrit repository, default is false)', {
-      default: false
-    })
+    .command('', `写完代码以后，终端输入-->  commit  <--然后尽情享受吧 🎉`)
+    // .option(
+    //   'autoPush',
+    //   '是否自动提交到远程仓库,默认为false (Automatically push to remote after committing, default is false)',
+    //   {
+    //     default: false
+    //   }
+    // )
+    // .option('isGerrit', '是否是gerrit仓库,默认为false (Is gerrit repository, default is false)', {
+    //   default: false
+    // })
     .action((opts: CommitConfig) => {
       Log.info('开始提交代码...')
 
@@ -54,8 +54,8 @@ cli.commands = [
           Log.info('提交成功 🎉')
           process.exit(0)
         })
-        .catch(() => {
-          Log.error('提交失败 😢')
+        .catch((err) => {
+          Log.error('提交失败 😢', err)
           process.exit(1)
         })
     })
