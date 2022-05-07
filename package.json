@@ -1,5 +1,5 @@
 {
-  "name": "commit-tool",
+  "name": "@wchenonly/commit",
   "version": "1.0.0",
   "description": "use an interactive approach to help you generate standard submission messages",
   "bin": {
