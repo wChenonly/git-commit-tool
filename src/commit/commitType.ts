@@ -12,9 +12,9 @@ export interface Commit {
 
 export interface CommitConfig {
   // 是否自动提交到远程仓库,默认不自动提交
-  autoPush: boolean
+  // autoPush: boolean
   // 是否是提交到gerrit仓库，因为gerrit需要refs审核，所以需要判断是否是gerrit仓库
-  isGerrit: boolean
+  // isGerrit: boolean
   // 提交类型
   types?: CommitType[]
 }

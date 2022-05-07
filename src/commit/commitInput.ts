@@ -68,7 +68,7 @@ export async function commit(config: CommitConfig) {
       type: 'confirm'
     }
   ])
-  console.warn('confirmAutoPush', autoPush)
+  // console.warn('confirmAutoPush', autoPush)
 
   if (autoPush) {
     const pushBranch = getGitBranchName()

@@ -21,7 +21,7 @@ cli.commands = [
     // .option('isGerrit', '是否是gerrit仓库,默认为false (Is gerrit repository, default is false)', {
     //   default: false
     // })
-    .action((opts: CommitConfig) => {
+    .action(() => {
       Log.info('开始提交代码...')
 
       if (isGitRep()) {
@@ -42,9 +42,7 @@ cli.commands = [
         )
         return
       }
-      const config: CommitConfig = {
-        ...opts
-      }
+      const config: CommitConfig = {}
       // console.warn('opts参数', config)
 
       config.types = commitType
