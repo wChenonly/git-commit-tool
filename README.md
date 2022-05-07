@@ -1,6 +1,6 @@
 # git-commit-tool
 
-使用交互式方法帮助您生成标准提交消息 (use an interactive approach to help you generate standard submission messages)
+用交互式方法帮助您生成标准提交消息 (use an interactive approach to help you generate standard submission messages)
 
 # 使用方法
 
