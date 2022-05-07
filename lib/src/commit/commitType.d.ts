@@ -9,8 +9,6 @@ export interface Commit {
   body: string
 }
 export interface CommitConfig {
-  autoPush: boolean
-  isGerrit: boolean
   types?: CommitType[]
 }
 export declare const commitType: Array<CommitType>
