@@ -58,7 +58,7 @@ export async function commit(config: CommitConfig) {
 
   if (!confirmCommit) return
 
-  Log.info('autoPush', autoPush, 'isGerrit', isGerrit)
+  // Log.info('autoPush', autoPush, 'isGerrit', isGerrit)
 
   console.log(chalk.green('提交代码到本地仓库'))
   await execa('git', ['commit', '-m', message])
