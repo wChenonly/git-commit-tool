@@ -1,8 +1,7 @@
 import cac from 'cac'
 import { Log, isExitAddFile, isGitRep, isGitNeedPull } from './utils/utils'
-import { CommitConfig } from './commit/commitType'
+import { CommitConfig, commitType } from './commit/commitType'
 import { commit } from './commit/commitinput'
-import { commitType } from './commit/commitType'
 import { version } from '../package.json'
 
 const cli = cac('commit')

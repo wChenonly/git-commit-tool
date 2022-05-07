@@ -1,9 +1,8 @@
-import { Log, getCommitMessage } from '../utils/utils'
-import { CommitConfig, Commit, CommitType } from './commitType'
 import inquirer from 'inquirer'
 import chalk from 'chalk'
 import { execa } from 'execa'
-import { getGitBranchName } from '../utils/utils'
+import { Log, getCommitMessage, getGitBranchName } from '../utils/utils'
+import { CommitConfig, Commit, CommitType } from './commitType'
 
 export async function commit(config: CommitConfig) {
   const { types: commitTypes = [] } = config

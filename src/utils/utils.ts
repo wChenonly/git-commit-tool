@@ -3,7 +3,6 @@ import isAdded from 'is-git-added'
 import isGit from 'is-git-repository'
 import needsPull from 'git-needs-pull'
 import branchName from 'current-git-branch'
-
 import { Commit } from '../commit/commitType'
 
 // 检查是否存在暂存文件
