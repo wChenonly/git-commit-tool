@@ -1,6 +1,6 @@
 {
   "name": "git-commit-tool",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "use an interactive approach to help you generate standard submission messages",
   "bin": {
     "commit": "bin/index.js"
@@ -10,8 +10,7 @@
     "dev": "rollup -w -c",
     "build": "rollup -c",
     "prepare": "husky install",
-    "lint-fix": "npm run format && eslint --fix ./src --ext .js,.vue,.ts,.tsx",
-    "format": "prettier --write ."
+    "lint-fix": " eslint --fix . && prettier --write ."
   },
   "repository": {
     "type": "git",

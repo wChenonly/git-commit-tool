@@ -59,7 +59,7 @@ export async function commit(config: CommitConfig) {
   if (!confirmCommit) return
 
   console.log(chalk.green('提交代码到本地仓库'))
-  await execa('git', ['commit', '-m', message])
+  await execa('git', ['commit', '-m', message], { stdio: 'inherit' })
 
   const { autoPush } = await inquirer.prompt([
     {
