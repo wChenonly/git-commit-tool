@@ -77,5 +77,7 @@ export async function commit(config: CommitConfig) {
       // git push origin master
       await execa('git', ['push'])
     }
+  } else {
+    Log.info('请手动推送代码到远端仓库')
   }
 }
