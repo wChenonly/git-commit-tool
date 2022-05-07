@@ -1,8 +1,10 @@
 {
-  "name": "commit",
+  "name": "commit-tool",
   "version": "1.0.0",
   "description": "use an interactive approach to help you generate standard submission messages",
-  "bin": "bin/index.js",
+  "bin": {
+    "commit": "bin/index.js"
+  },
   "type": "module",
   "scripts": {
     "dev": "rollup -w -c",
