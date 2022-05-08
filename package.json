@@ -39,14 +39,15 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "git-needs-pull": "^2.1.0",
-    "is-git-added": "^1.0.2",
-    "is-git-repository": "^2.0.0",
     "cac": "^6.7.12",
     "chalk": "5.*",
     "current-git-branch": "^1.1.0",
     "execa": "^6.1.0",
-    "inquirer": "^8.2.4"
+    "git-needs-pull": "^2.1.0",
+    "inquirer": "^8.2.4",
+    "is-git-added": "^1.0.2",
+    "is-git-repository": "^2.0.0",
+    "ora": "^6.1.0"
   },
   "lint-staged": {
     "*.md": "prettier --write",

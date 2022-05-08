@@ -1,4 +1,5 @@
 import cac from 'cac'
+import ora from 'ora'
 import { Log, isExitAddFile, isGitRep, isGitNeedPull } from './utils/utils'
 import { CommitConfig, commitType } from './commit/commitType'
 import { commit } from './commit/commitinput'
@@ -21,7 +22,9 @@ cli.commands = [
     //   default: false
     // })
     .action(() => {
-      Log.info('开始提交代码...')
+      const spinner = ora(` Log.info('开始提交代码...')`).start()
+
+      spinner.succeed('Loaded succeed')
 
       if (isGitRep()) {
         Log.error('不是git仓库,请先切换到git仓库 (Not a git repository, please switch to git repository)')

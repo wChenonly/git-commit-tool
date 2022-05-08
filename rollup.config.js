@@ -32,6 +32,7 @@ module.exports = {
     'execa',
     'git-needs-pull',
     'current-git-branch',
-    'cac'
+    'cac',
+    'ora'
   ]
 }
