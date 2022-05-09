@@ -30,4 +30,4 @@ git push 是推送
 origin : 是远程的库的名字
 HEAD: 是一个特别的指针，它是一个指向你正在工作的本地分支的指针，可以把它当做本地分支的别名，git 这样就可以知道你工作在哪个分支
 refs/for :意义在于我们提交代码到服务器之后是需要经过 code review 之后才能进行 merge 的
-refs/heads 不需要
+refs/heads 不需要的
