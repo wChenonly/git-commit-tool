@@ -90,7 +90,7 @@ export async function commit(config: CommitConfig) {
       await execa('git', ['push'])
     }
   } else {
-    console.log(chalk.red('⚠️   别忘记手动推送代码到远端仓库'))
+    console.log(chalk.red('别忘记手动推送代码到远端仓库'))
   }
 
   // if (autoPush) {
