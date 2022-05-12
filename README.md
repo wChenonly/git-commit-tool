@@ -21,6 +21,8 @@ npm install -g git-commit-tool
 
 ![](./instructions/use.gif)
 
+使用 [svg-term-cli](https://github.com/marionebl/svg-term-cli) 生成。
+
 ## 说明：gerrit 仓库 push 代码
 
 ### gerrit 的规矩：https://gerrit-documentation.storage.googleapis.com/Documentation/3.5.1/concept-refs-for-namespace.html
