@@ -19,7 +19,7 @@ npm install -g git-commit-tool
 尽情享受吧 🎉🎉🎉
 ```
 
-![](./instructions/use.gif)
+![](./instructions/commit.svg)
 
 使用 [svg-term-cli](https://github.com/marionebl/svg-term-cli) 生成。
 
