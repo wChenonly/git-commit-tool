@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 // 将json转换为ES6模块
-const json = require('@rollup/plugin-json')
+import json from '@rollup/plugin-json'
 
 // rollup解析及编译TS插件
-const typescript = require('@rollup/plugin-typescript')
+import typescript from '@rollup/plugin-typescript'
 
 // rollup文件夹清除插件
-const { cleandir } = require('rollup-plugin-cleandir')
+import { cleandir } from 'rollup-plugin-cleandir'
 
 module.exports = {
   input: ['./src/cli.ts'],
@@ -32,6 +30,7 @@ module.exports = {
     'execa',
     'git-needs-pull',
     'current-git-branch',
-    'cac'
+    'cac',
+    'node-emoji'
   ]
 }
