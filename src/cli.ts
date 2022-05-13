@@ -1,5 +1,6 @@
 import cac from 'cac'
-import { Log, isExitAddFile, isGitRep } from './utils/utils'
+import ora from 'ora'
+import { Log, isExitAddFile, isGitRep, isGitNeedPull } from './utils/utils'
 import { CommitConfig, commitType } from './commit/commitType'
 import { commit } from './commit/commitinput'
 import { version } from '../package.json'
@@ -31,13 +32,20 @@ cli.commands = [
         return
       }
 
-      // todo:由于此方法太耗时，因此先不使用，寻找解决方案。。。
-      // if (isGitNeedPull()) {
-      //   Log.error(
-      //     'git存储库需要拉取,请先git pull命令,再执行该命令 (git repository needs pull, please git pull first, then execute this command)'
-      //   )
-      //   return
-      // }
+      const spinner = ora({
+        color: 'green',
+        text: '正在检查是否需要更新代码'
+      }).start()
+
+      if (isGitNeedPull()) {
+        spinner.fail()
+        Log.error(
+          'git存储库需要拉取,请先git pull命令,再执行该命令 (git repository needs pull, please git pull first, then execute this command)'
+        )
+        return
+      } else {
+        spinner.succeed()
+      }
 
       if (isExitAddFile()) {
         Log.error(

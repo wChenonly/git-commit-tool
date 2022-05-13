@@ -28,13 +28,13 @@ export function getGitBranchName() {
 // 控制台输出封装
 export const Log = {
   info(...args: unknown[]) {
-    console.log(chalk.cyan('Info:'), chalk.cyan(...args))
+    console.log(chalk.cyan(...args))
   },
   warn(...args: unknown[]) {
-    console.log(chalk.yellow('Warn:'), chalk.yellow(...args))
+    console.log(chalk.yellow(...args))
   },
   error(...args: unknown[]) {
-    console.log(chalk.red('Error:'), chalk.red(...args))
+    console.log(chalk.red(...args))
   }
 }
 

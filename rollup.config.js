@@ -31,6 +31,6 @@ module.exports = {
     'git-needs-pull',
     'current-git-branch',
     'cac',
-    'node-emoji'
+    'ora'
   ]
 }
