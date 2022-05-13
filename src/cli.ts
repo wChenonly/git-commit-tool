@@ -28,29 +28,25 @@ cli.commands = [
       // console.warn('opts参数', config)
 
       if (isGitRep()) {
-        Log.error('不是git仓库,请先切换到git仓库 (Not a git repository, please switch to git repository)')
+        Log.error('不是git仓库,请先切换到git仓库')
         return
       }
 
       const spinner = ora({
         color: 'green',
-        text: '正在检查是否需要更新代码'
+        text: '正在检查是否有未更新代码'
       }).start()
 
       if (isGitNeedPull()) {
         spinner.fail()
-        Log.error(
-          'git存储库需要拉取,请先git pull命令,再执行该命令 (git repository needs pull, please git pull first, then execute this command)'
-        )
+        Log.error('有未更新的代码,请先git pull更新代码')
         return
       } else {
         spinner.succeed()
       }
 
       if (isExitAddFile()) {
-        Log.error(
-          '暂存区为空,请先git add命令,在执行该命令 (staging area empty, please git add first,then execute this command)'
-        )
+        Log.error('暂存区为空,请先git add提交代码到暂存区')
         return
       }
 

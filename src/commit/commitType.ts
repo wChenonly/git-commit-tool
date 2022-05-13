@@ -1,13 +1,13 @@
 export interface CommitType {
-  readonly label: string
-  readonly key?: string
+  readonly emoji: string
+  readonly key: string
   readonly description: string
 }
 
 export interface Commit {
   type: string
   scope?: string
-  body: string
+  subject: string
 }
 
 export interface CommitConfig {
@@ -21,52 +21,52 @@ export interface CommitConfig {
 
 export const commitType: Array<CommitType> = [
   {
-    label: '🎉 init',
+    emoji: '🎉',
     key: 'init',
     description: '初次提交/初始化项目'
   },
   {
-    label: '💥 feature',
+    emoji: '💥',
     key: 'feature',
     description: '引入新功能'
   },
   {
-    label: '🚑 bugfix',
+    emoji: '🚑',
     key: 'bugfix',
     description: '修复bug'
   },
   {
-    label: '💄 style',
+    emoji: '💄',
     key: 'style',
     description: '更新 UI 和样式文件'
   },
   {
-    label: '🎨 format',
+    emoji: '🎨',
     key: 'format',
     description: '改进代码结构/代码格式，不涉及代码逻辑'
   },
   {
-    label: '📝 docs',
+    emoji: '📝',
     key: 'docs',
     description: '仅仅修改文档'
   },
   {
-    label: '🔨 refactor',
+    emoji: '🔨',
     key: 'refactor',
     description: '代码重构,没有加新功能或者修复bug'
   },
   {
-    label: '🚀 perf',
+    emoji: '🚀',
     key: 'perf',
     description: '优化相关，比如提升性能、体验'
   },
   {
-    label: '✅ test',
+    emoji: '✅',
     key: 'test',
     description: '增加测试用例'
   },
   {
-    label: '👷‍♂️ ci',
+    emoji: '👷',
     key: 'ci',
     description: '配置相关/依赖相关/打包相关等'
   }

@@ -8,7 +8,7 @@ export async function commit(config: CommitConfig) {
   const { types: commitTypes = [] } = config
 
   const types = commitTypes.map((item: CommitType) => {
-    return { name: `${item.label}: ${item.description}` }
+    return { name: `${item.key}: ${item.emoji} ${item.description}` }
   })
 
   // 获取message信息
@@ -23,6 +23,9 @@ export async function commit(config: CommitConfig) {
           return true
         }
         return '修改类型不能为空'
+      },
+      filter(val) {
+        return `${val.split(':')[0]}`
       }
     },
     {
@@ -31,7 +34,7 @@ export async function commit(config: CommitConfig) {
       type: 'input'
     },
     {
-      name: 'body',
+      name: 'subject',
       message: '请输入本次修改内容:',
       type: 'input',
       validate: (value: string) => {
@@ -45,7 +48,7 @@ export async function commit(config: CommitConfig) {
 
   const message = getCommitMessage(reult)
 
-  Log.info(`本次提交的信息为: `, chalk.green(message))
+  Log.info(`本次提交的信息为:`, chalk.green(message))
 
   const { confirmCommit } = await inquirer.prompt([
     {
@@ -85,29 +88,10 @@ export async function commit(config: CommitConfig) {
       // repo.push('origin', `HEAD:refs/for/${pushBranch}`)
       await execa('git', ['push', 'origin', `HEAD:refs/for/${pushBranch}`])
     } else {
-      // push到其他仓库
-      // git push origin master
+      // push到其他仓库 git push origin
       await execa('git', ['push'])
     }
   } else {
-    console.log(chalk.red('别忘记手动推送代码到远端仓库'))
+    console.log(chalk.red('别忘记手动推送代码到远端仓库 🫵'))
   }
-
-  // if (autoPush) {
-  //   console.log(chalk.green('提交代码到远端仓库,要确认是否是gerrit仓库'))
-
-  //   const pushBranch = getGitBranchName()
-  //   if (isGerrit) {
-  //     // push到gerrit仓库，因为gerrit refs审核
-  //     // git push origin HEAD:refs/for/master
-  //     // repo.push('origin', `HEAD:refs/for/${pushBranch}`)
-  //     await execa('git', ['push', 'origin', `HEAD:refs/for/${pushBranch}`])
-  //   } else {
-  //     // push到其他仓库
-  //     // git push origin master
-  //     await execa('git', ['push'])
-  //   }
-  // } else {
-  //   console.log(chalk.red('⚠️   别忘记手动推送代码到远端仓库'))
-  // }
 }

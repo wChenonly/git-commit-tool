@@ -43,9 +43,9 @@ export const getCommitMessage = (info: Commit) => {
   let message = `${info.type}`
 
   if (info.scope) {
-    message += `(${info.scope}): ${info.body}`
+    message += `(${info.scope}): ${info.subject}`
   } else {
-    message += `: ${info.body}`
+    message += `: ${info.subject}`
   }
 
   return message

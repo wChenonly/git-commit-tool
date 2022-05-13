@@ -1,12 +1,12 @@
 export interface CommitType {
-  readonly label: string
-  readonly key?: string
+  readonly emoji: string
+  readonly key: string
   readonly description: string
 }
 export interface Commit {
   type: string
   scope?: string
-  body: string
+  subject: string
 }
 export interface CommitConfig {
   types?: CommitType[]
