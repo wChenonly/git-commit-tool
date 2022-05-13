@@ -49,7 +49,7 @@ cli.commands = [
 
       if (isExitAddFile()) {
         Log.error(
-          '存在暂存文件,请先git add命令,在执行该命令 (There are uncommitted files, please git add first,then execute this command)'
+          '暂存区为空,请先git add命令,在执行该命令 (staging area empty, please git add first,then execute this command)'
         )
         return
       }
