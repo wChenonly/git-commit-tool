@@ -10,7 +10,8 @@
     "dev": "rollup -w -c",
     "build": "rollup -c",
     "prepare": "husky install",
-    "lint-fix": " eslint --fix . && prettier --write ."
+    "lint-fix": " eslint --fix . && prettier --write .",
+    "release": "bumpp --commit --push --tag && npm publish"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "@types/inquirer": "^8.2.1",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
+    "bumpp": "^7.1.1",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
