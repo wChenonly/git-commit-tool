@@ -24,37 +24,36 @@
   },
   "homepage": "https://github.com/wChenonly/git-commit-tool#readme",
   "devDependencies": {
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-typescript": "^8.3.2",
-    "@types/inquirer": "^8.2.1",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
-    "bumpp": "^7.1.1",
-    "eslint": "^8.15.0",
+    "@rollup/plugin-json": "^5.0.1",
+    "@rollup/plugin-typescript": "^9.0.2",
+    "@types/inquirer": "^9.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
-    "lint-staged": "^12.4.1",
-    "prettier": "^2.6.2",
-    "rollup": "^2.72.1",
+    "nano-staged": "^0.8.0",
+    "prettier": "^2.7.1",
+    "rollup": "^3.2.3",
     "rollup-plugin-cleandir": "^2.0.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.8.4"
   },
   "dependencies": {
-    "cac": "^6.7.12",
-    "chalk": "5.*",
+    "cac": "^6.7.14",
+    "chalk": "^5.1.2",
     "current-git-branch": "^1.1.0",
     "execa": "^6.1.0",
     "git-needs-pull": "^2.1.0",
-    "inquirer": "^8.2.4",
+    "inquirer": "^9.1.4",
     "is-git-added": "^1.0.2",
     "is-git-repository": "^2.0.0",
-    "ora": "^6.1.0"
+    "ora": "^6.1.2"
   },
-  "lint-staged": {
-    "*.md": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix",
-    "*.{ts,tsx,js,vue,less,scss}": "prettier --write"
+  "nano-staged": {
+    "*.{ts,tsx,js,jsx,vue}": "eslint --fix",
+    "*.{ts,tsx,js,jsx,vue,less,css,md}": "prettier --write"
   },
   "files": [
     "lib",
