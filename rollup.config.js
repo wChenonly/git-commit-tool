@@ -7,7 +7,7 @@ import typescript from '@rollup/plugin-typescript'
 // rollup文件夹清除插件
 import { cleandir } from 'rollup-plugin-cleandir'
 
-module.exports = {
+export default {
   input: ['./src/cli.ts'],
   output: {
     dir: './lib',
@@ -31,6 +31,10 @@ module.exports = {
     'git-needs-pull',
     'current-git-branch',
     'cac',
-    'ora'
+    'ora',
+    'fs',
+    'path',
+    'ini',
+    'open'
   ]
 }

@@ -9,3 +9,4 @@ export declare const Log: {
   error(...args: unknown[]): void
 }
 export declare const getCommitMessage: (info: Commit) => string
+export declare const getUrl: () => string

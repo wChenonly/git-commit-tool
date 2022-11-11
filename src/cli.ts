@@ -1,9 +1,10 @@
 import cac from 'cac'
 import ora from 'ora'
-import { Log, isExitAddFile, isGitRep, isGitNeedPull } from './utils/utils'
+import { Log, isExitAddFile, isGitRep, isGitNeedPull, getUrl } from './utils/utils'
 import { CommitConfig, commitType } from './commit/commitType'
-import { commit } from './commit/commitinput'
+import { commit, isOpenWindow } from './commit/commitinput'
 import { version } from '../package.json'
+import open from 'open'
 
 const cli = cac('commit')
 
@@ -46,14 +47,24 @@ cli.commands = [
       }
 
       if (isExitAddFile()) {
-        Log.error('暂存区为空,请先git add提交代码到暂存区')
+        Log.error('暂存区为空,请先git add . 提交代码到暂存区')
         return
       }
 
       commit(config)
         .then(() => {
           Log.info('提交成功 🎉')
-          process.exit(0)
+          const openWindowResult = isOpenWindow()
+          openWindowResult
+            .then(() => {
+              open(getUrl())
+              Log.info('打开浏览器成功 🎉')
+              process.exit(0)
+            })
+            .catch((err) => {
+              Log.error('打开浏览器失败 😢', err)
+              process.exit(1)
+            })
         })
         .catch((err) => {
           Log.error('提交失败 😢', err)

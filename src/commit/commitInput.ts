@@ -74,6 +74,7 @@ export async function commit(config: CommitConfig) {
 
   if (autoPush) {
     const pushBranch = getGitBranchName()
+
     const { isGerrit } = await inquirer.prompt([
       {
         name: 'isGerrit',
@@ -89,9 +90,21 @@ export async function commit(config: CommitConfig) {
       await execa('git', ['push', 'origin', `HEAD:refs/for/${pushBranch}`])
     } else {
       // push到其他仓库 git push origin
-      await execa('git', ['push'])
+      await execa('git', ['push', 'origin', `${pushBranch}`])
     }
   } else {
     console.log(chalk.red('别忘记手动推送代码到远端仓库 🫵'))
   }
+}
+
+export async function isOpenWindow() {
+  const { isOpenWindow } = await inquirer.prompt([
+    {
+      name: 'isOpenWindow',
+      message: '是否自动打开仓库,创建MR?',
+      type: 'confirm',
+      default: true
+    }
+  ])
+  return isOpenWindow
 }

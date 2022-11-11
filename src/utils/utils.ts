@@ -4,6 +4,9 @@ import isGit from 'is-git-repository'
 import needsPull from 'git-needs-pull'
 import branchName from 'current-git-branch'
 import { Commit } from '../commit/commitType'
+import fs from 'fs'
+import path from 'path'
+import ini from 'ini'
 
 // 检查是否存在暂存文件
 export function isExitAddFile() {
@@ -49,4 +52,10 @@ export const getCommitMessage = (info: Commit) => {
   }
 
   return message
+}
+
+export const getUrl = (): string => {
+  const configPath = path.resolve(process.cwd(), '.git/config')
+  const file = fs.readFileSync(configPath, 'utf8')
+  return ini.parse(file)['remote "origin"'].url.replace(/\.git$/, '')
 }
