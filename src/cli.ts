@@ -56,13 +56,18 @@ cli.commands = [
           Log.info('提交成功 🎉')
           const openWindowResult = isOpenWindow()
           openWindowResult
-            .then(() => {
-              open(getUrl())
-              Log.info('打开浏览器成功 🎉')
-              process.exit(0)
+            .then((res) => {
+              if (res) {
+                open(getUrl())
+                Log.info('打开浏览器成功 🎉')
+                process.exit(0)
+              } else {
+                Log.info('记得去仓库创建MR 😄')
+                process.exit(0)
+              }
             })
             .catch((err) => {
-              Log.error('打开浏览器失败 😢', err)
+              Log.error('打开浏览器失败,记得去仓库创建MR 😢', err)
               process.exit(1)
             })
         })
