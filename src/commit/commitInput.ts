@@ -45,7 +45,7 @@ export async function commit(config: CommitConfig) {
       }
     }
   ])
-  console.log('%c [ reult ]韦帆韦帆韦帆-50-「commitInput.ts」', 'font-size:13px; background:#df0b78; color:#ff4fbc;', reult)
+
   const message = getCommitMessage(reult)
 
   Log.info(`本次提交的信息为:`, chalk.green(message))
@@ -101,7 +101,7 @@ export async function isOpenWindow() {
   const { isOpenWindow } = await inquirer.prompt([
     {
       name: 'isOpenWindow',
-      message: '是否自动打开仓库,创建MR?',
+      message: '是否自动打开仓库,创建合并请求?',
       type: 'confirm',
       default: true
     }

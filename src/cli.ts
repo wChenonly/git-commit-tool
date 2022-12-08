@@ -62,12 +62,12 @@ cli.commands = [
                 Log.info('打开浏览器成功 🎉')
                 process.exit(0)
               } else {
-                Log.info('记得去仓库创建MR 😄')
+                Log.info('记得去仓库创建合并请求 😄')
                 process.exit(0)
               }
             })
             .catch(err => {
-              Log.error('打开浏览器失败,记得去仓库创建MR 😢', err)
+              Log.error('打开浏览器失败,记得去仓库创建合并请求 😢', err)
               process.exit(1)
             })
         })
