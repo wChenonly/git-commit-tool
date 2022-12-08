@@ -5,7 +5,7 @@
     "target": "ESNext",
     "module": "esnext",
     "declaration": true,
-    "outDir": "lib",
+    "outDir": "es",
     "strict": true,
     "esModuleInterop": true,
     "pretty": true,

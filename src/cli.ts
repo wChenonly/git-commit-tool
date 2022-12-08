@@ -2,7 +2,7 @@ import cac from 'cac'
 import ora from 'ora'
 import { Log, isExitAddFile, isGitRep, isGitNeedPull, getUrl } from './utils/utils'
 import { CommitConfig, commitType } from './commit/commitType'
-import { commit, isOpenWindow } from './commit/commitinput'
+import { commit, isOpenWindow } from './commit/commitInput'
 import { version } from '../package.json'
 import open from 'open'
 
@@ -56,7 +56,7 @@ cli.commands = [
           Log.info('提交成功 🎉')
           const openWindowResult = isOpenWindow()
           openWindowResult
-            .then((res) => {
+            .then(res => {
               if (res) {
                 open(getUrl())
                 Log.info('打开浏览器成功 🎉')
@@ -66,12 +66,12 @@ cli.commands = [
                 process.exit(0)
               }
             })
-            .catch((err) => {
+            .catch(err => {
               Log.error('打开浏览器失败,记得去仓库创建MR 😢', err)
               process.exit(1)
             })
         })
-        .catch((err) => {
+        .catch(err => {
           Log.error('提交失败 😢', err)
           process.exit(1)
         })

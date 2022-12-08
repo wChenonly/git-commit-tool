@@ -8,7 +8,7 @@ export async function commit(config: CommitConfig) {
   const { types: commitTypes = [] } = config
 
   const types = commitTypes.map((item: CommitType) => {
-    return { name: `${item.key}: ${item.emoji} ${item.description}` }
+    return { name: `${item.key}: ${item.description}` }
   })
 
   // 获取message信息
@@ -45,7 +45,7 @@ export async function commit(config: CommitConfig) {
       }
     }
   ])
-
+  console.log('%c [ reult ]韦帆韦帆韦帆-50-「commitInput.ts」', 'font-size:13px; background:#df0b78; color:#ff4fbc;', reult)
   const message = getCommitMessage(reult)
 
   Log.info(`本次提交的信息为:`, chalk.green(message))
