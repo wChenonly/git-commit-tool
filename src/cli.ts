@@ -26,7 +26,6 @@ cli.commands = [
       Log.info('开始提交代码...')
       const config: CommitConfig = {}
       config.types = commitType
-      // console.warn('opts参数', config)
 
       if (isGitRep()) {
         Log.error('不是git仓库,请先切换到git仓库')
@@ -67,7 +66,7 @@ cli.commands = [
               }
             })
             .catch(err => {
-              Log.error('打开浏览器失败,记得去仓库创建合并请求 😢', err)
+              Log.error('打开浏览器失败,记得去仓库创建合并请求 😢', err, getUrl())
               process.exit(1)
             })
         })
