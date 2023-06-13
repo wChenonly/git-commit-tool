@@ -34,7 +34,6 @@
   "scripts": {
     "build": "rm -rf es && tsx ./build.ts",
     "lint:fix": "eslint --fix . && prettier --write .",
-    "postinstall": "npx simple-git-hooks",
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
   },
