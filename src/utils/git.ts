@@ -10,7 +10,7 @@ export async function add() {
 }
 export async function commit(message: string) {
   const spinner = ora('git commit 进行中').start()
-  await execa('git', ['commit', '-m', message])
+  await execa('git', ['commit', '-m', message], { stdio: 'inherit' })
   spinner.succeed(`${chalk.green('git commit 到本地成功 🍺🍺🍺')}`)
 }
 
