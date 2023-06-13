@@ -11,14 +11,13 @@ const cli = cac('commit')
 // cli命令数组
 cli.commands = [
   cli.command('', '写完代码以后，终端输入-->  commit  <--然后尽情享受吧 🎉').action(async () => {
-    Log.info('开始提交代码...')
-    const config: CommitConfig = {}
-    config.types = commitType
-
     if (isGitRep()) {
       Log.error('不是git仓库,请先切换到git仓库')
       return
     }
+    Log.info('开始提交代码...')
+    const config: CommitConfig = {}
+    config.types = commitType
 
     const spinner = ora({ color: 'green', text: '正在检查是否有未更新代码' }).start()
 
