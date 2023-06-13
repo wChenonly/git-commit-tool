@@ -1,7 +1,7 @@
 {
   "name": "git-commit-tool",
   "type": "module",
-  "version": "1.1.15",
+  "version": "1.1.16",
   "description": "use an interactive approach to help you generate standard submission messages",
   "author": "wChenonly",
   "license": "MIT",
