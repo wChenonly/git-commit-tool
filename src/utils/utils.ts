@@ -1,12 +1,11 @@
+import fs from 'node:fs'
+import path from 'node:path'
 import chalk from 'chalk'
 import isAdded from 'is-git-added'
 import isGit from 'is-git-repository'
 import needsPull from 'git-needs-pull'
-import branchName from 'current-git-branch'
-import { Commit } from '../commit/commitType'
-import fs from 'fs'
-import path from 'path'
 import ini from 'ini'
+import type { Commit } from '../commit/commitType'
 
 // 检查是否存在暂存文件
 export function isExitAddFile() {
@@ -23,38 +22,31 @@ export function isGitNeedPull() {
   return needsPull()
 }
 
-// 获取当前分支名字
-export function getGitBranchName() {
-  return branchName()
-}
-
 // 控制台输出封装
 export const Log = {
   info(...args: unknown[]) {
-    console.log(chalk.cyan(...args))
+    console.log(chalk.green(...args))
   },
   warn(...args: unknown[]) {
     console.log(chalk.yellow(...args))
   },
   error(...args: unknown[]) {
-    console.log(chalk.red(...args))
-  }
+    console.log(chalk.bgRed(...args))
+  },
 }
 
-//获取提交的信息
-export const getCommitMessage = (info: Commit) => {
+// 获取提交的信息
+export function getCommitMessage(info: Commit) {
   let message = `${info.type}`
 
-  if (info.scope) {
+  if (info.scope)
     message += `(${info.scope}): ${info.subject}`
-  } else {
-    message += `: ${info.subject}`
-  }
+  else message += `: ${info.subject}`
 
   return message
 }
 
-export const getUrl = (): string => {
+export function getUrl(): string {
   const configPath = path.resolve(process.cwd(), '.git/config')
   const file = fs.readFileSync(configPath, 'utf8')
   return ini.parse(file)['remote "origin"'].url.replace(/\.git$/, '')

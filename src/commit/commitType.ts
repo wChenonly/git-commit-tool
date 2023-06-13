@@ -10,55 +10,50 @@ export interface Commit {
 }
 
 export interface CommitConfig {
-  // 是否自动提交到远程仓库,默认不自动提交
-  // autoPush: boolean
-  // 是否是提交到gerrit仓库，因为gerrit需要refs审核，所以需要判断是否是gerrit仓库
-  // isGerrit: boolean
-  // 提交类型
   types?: CommitType[]
 }
 
 export const commitType: Array<CommitType> = [
   {
     key: '🎉 init',
-    description: '初次提交/初始化项目'
+    description: '初次提交/初始化项目',
   },
   {
     key: '💥 feature',
-    description: '引入新功能'
+    description: '引入新功能',
   },
   {
     key: '🚑 bugfix',
-    description: '修复bug'
+    description: '修复bug',
   },
   {
     key: '💄 style',
-    description: '更新 UI 和样式文件'
+    description: '更新 UI 和样式文件',
   },
   {
     key: '🎨 format',
-    description: '改进代码结构/代码格式，不涉及代码逻辑'
+    description: '改进代码结构/代码格式，不涉及代码逻辑',
   },
   {
     key: '📝 docs',
-    description: '仅仅修改文档'
+    description: '仅仅修改文档',
   },
   {
     key: '🔨 refactor',
-    description: '代码重构,没有加新功能或者修复bug'
+    description: '代码重构,没有加新功能或者修复bug',
   },
   {
     key: '🚀 performance',
-    description: '优化相关，如提升性能、体验'
+    description: '优化相关，如提升性能、体验',
   },
   {
     key: '✅ test',
-    description: '测试用例相关'
+    description: '测试用例相关',
   },
   {
     key: '👷 ci',
-    description: '配置相关/依赖相关/打包相关等'
-  }
+    description: '配置相关/依赖相关/打包相关等',
+  },
 ]
 
 export default commitType

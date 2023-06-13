@@ -1,20 +1,27 @@
-import esbuild from 'esbuild'
+import { type BuildOptions, build } from 'esbuild'
 import chalk from 'chalk'
 
-esbuild
-  .build({
-    entryPoints: ['src/cli.ts'],
-    bundle: true,
-    outdir: 'es',
-    external: ['chalk', 'is-git-repository', 'is-git-added', 'inquirer', 'execa', 'git-needs-pull', 'current-git-branch', 'cac', 'ora', 'fs', 'path', 'ini', 'open'],
+async function bundle() {
+  const options: BuildOptions = {
     format: 'esm',
-    tsconfig: './tsconfig.json',
+    bundle: true,
+    entryPoints: ['src/cli.ts'],
     minify: true,
-    splitting: true
-  })
-  .then(() => {
+    platform: 'node',
+    outdir: 'es',
+    treeShaking: true,
+    splitting: true,
+    external: ['chalk', 'is-git-repository', 'is-git-added', '@clack/prompts', 'execa', 'git-needs-pull', 'cac', 'ora', 'fs', 'path', 'ini', 'open'],
+    tsconfig: './tsconfig.json',
+  }
+
+  try {
+    await build(options)
     console.log(chalk.green('😊 Build success'))
-  })
-  .catch(() => {
-    console.log(chalk.red('😢 Build failed'))
-  })
+  }
+  catch (error) {
+    console.log(chalk.red('😢 Build failed', error))
+  }
+}
+
+bundle()

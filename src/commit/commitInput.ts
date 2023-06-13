@@ -1,110 +1,85 @@
-import inquirer from 'inquirer'
 import chalk from 'chalk'
-import { execa } from 'execa'
-import { Log, getCommitMessage, getGitBranchName } from '../utils/utils'
-import { CommitConfig, Commit, CommitType } from './commitType'
+import { cancel, confirm, isCancel, select, text } from '@clack/prompts'
+import open from 'open'
+import { Log, getCommitMessage, getUrl } from '../utils/utils'
+import { commit, gitBranchName, push } from '../utils/git'
+import type { Commit, CommitConfig, CommitType } from './commitType'
 
-export async function commit(config: CommitConfig) {
+export async function commitTool(config: CommitConfig) {
   const { types: commitTypes = [] } = config
 
   const types = commitTypes.map((item: CommitType) => {
-    return { name: `${item.key}: ${item.description}` }
+    return { value: `${item.key}: ${item.description}`, label: `${item.key}: ${item.description}` }
   })
 
-  // 获取message信息
-  const reult: Commit = await inquirer.prompt([
-    {
-      name: 'type',
-      message: '请选择本次提交的修改类型:',
-      type: 'list',
-      choices: types,
-      validate: (value: string) => {
-        if (value) {
-          return true
-        }
-        return '修改类型不能为空'
-      },
-      filter(val) {
-        return `${val.split(':')[0]}`
-      }
+  const selectValue: any = await select({
+    message: '请选择本次提交的修改类型:',
+    options: types,
+  })
+  cancel_(selectValue)
+
+  const scopeValue = await text({
+    message: '请填写改动范围(可选):',
+    placeholder: '如"首页","xx文件"等',
+  })
+  cancel_(scopeValue)
+
+  const subjectValue = await text({
+    message: '请输入本次修改内容:',
+    placeholder: '如"修改了xxx函数","重构了xxx页面"等',
+    validate(value) {
+      if (!value)
+        return chalk.red.bold('本次修改不能为空 🚔🚔🚔')
     },
-    {
-      name: 'scope',
-      message: '请输入本次提交的改动范围(可选):',
-      type: 'input'
-    },
-    {
-      name: 'subject',
-      message: '请输入本次修改内容:',
-      type: 'input',
-      validate: (value: string) => {
-        if (value) {
-          return true
-        }
-        return '本次修改不能为空'
-      }
-    }
-  ])
+  })
 
-  const message = getCommitMessage(reult)
+  cancel_(subjectValue)
 
-  Log.info(`本次提交的信息为:`, chalk.green(message))
+  const result: Commit = { type: `${selectValue.split(':')[0]}`, scope: scopeValue as string, subject: subjectValue as string }
 
-  const { confirmCommit } = await inquirer.prompt([
-    {
-      name: 'confirmCommit',
-      message: '确认要提交本次改动?',
-      type: 'confirm'
-    }
-  ])
+  const message = getCommitMessage(result)
 
-  if (!confirmCommit) return
+  Log.info('本次提交的信息为:', chalk.bgGreen(message))
 
-  console.log(chalk.green('提交代码到本地仓库'))
-  await execa('git', ['commit', '-m', message], { stdio: 'inherit' })
+  const confirmCommit = await confirm({ message: '确认要提交本次改动?' })
+  cancel_(confirmCommit)
 
-  const { autoPush } = await inquirer.prompt([
-    {
-      name: 'autoPush',
-      message: '是否要自动push代码?',
-      type: 'confirm'
-    }
-  ])
-  // console.warn('confirmAutoPush', autoPush)
+  if (!confirmCommit)
+    return
+
+  await commit(message)
+
+  const autoPush = await confirm({ message: '是否要自动提交代码?' })
+  cancel_(autoPush, '别忘记手动推送代码到仓库 🫵')
 
   if (autoPush) {
-    const pushBranch = getGitBranchName()
-
-    const { isGerrit } = await inquirer.prompt([
-      {
-        name: 'isGerrit',
-        message: '是否是gerrit仓库?',
-        type: 'confirm',
-        default: false
-      }
-    ])
-    if (isGerrit) {
-      // push到gerrit仓库，因为gerrit refs审核
-      // git push origin HEAD:refs/for/master
-      // repo.push('origin', `HEAD:refs/for/${pushBranch}`)
-      await execa('git', ['push', 'origin', `HEAD:refs/for/${pushBranch}`])
-    } else {
-      // push到其他仓库 git push origin
-      await execa('git', ['push', 'origin', `${pushBranch}`])
-    }
-  } else {
-    console.log(chalk.red('别忘记手动推送代码到远端仓库 🫵'))
+    const pushBranch = gitBranchName()
+    const isGerrit = await confirm({ message: '是否是gerrit仓库?', initialValue: false })
+    cancel_(isGerrit, '别忘记手动推送代码到仓库 🫵')
+    // push到gerrit仓库，因为gerrit refs审核
+    await push(isGerrit ? `refs/for/${pushBranch}` : pushBranch)
+    return true
+  }
+  else {
+    Log.error('别忘记手动推送代码到仓库哦 🫵')
   }
 }
 
 export async function isOpenWindow() {
-  const { isOpenWindow } = await inquirer.prompt([
-    {
-      name: 'isOpenWindow',
-      message: '是否自动打开仓库,创建合并请求?',
-      type: 'confirm',
-      default: true
-    }
-  ])
-  return isOpenWindow
+  const isOpenWindow = await confirm({ message: '是否自动打开仓库,创建合并请求?', initialValue: false })
+  cancel_(isOpenWindow, '记得去仓库创建合并请求 🫵')
+  if (isOpenWindow) {
+    open(getUrl())
+    Log.info('打开浏览器成功 🎉🎉🎉')
+    process.exit(0)
+  }
+}
+
+function cancel_(message: symbol | boolean | string, info?: string) {
+  if (isCancel(message)) {
+    if (info)
+      cancel(info)
+    else cancel('取消提交')
+    process.exit(0)
+  }
 }

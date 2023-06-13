@@ -1,68 +1,18 @@
 {
   "name": "git-commit-tool",
+  "type": "module",
   "version": "1.1.15",
   "description": "use an interactive approach to help you generate standard submission messages",
-  "bin": {
-    "commit": "bin/index.js"
-  },
-  "type": "module",
-  "scripts": {
-    "prepublishOnly": "npm run build",
-    "build": "rm -rf es && tsx ./build.ts",
-    "prepare": "husky install",
-    "lint-fix": "eslint --fix . && prettier --write .",
-    "release": "bumpp && npm publish"
-  },
+  "author": "wChenonly",
+  "license": "MIT",
+  "homepage": "https://github.com/wChenonly/git-commit-tool#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wChenonly/git-commit-tool.git"
   },
-  "author": "wChenonly",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/wChenonly/git-commit-tool/issues"
   },
-  "homepage": "https://github.com/wChenonly/git-commit-tool#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "devDependencies": {
-    "@types/ini": "^1.3.31",
-    "@types/inquirer": "^9.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.48.1",
-    "@typescript-eslint/parser": "^5.48.1",
-    "bumpp": "^8.2.1",
-    "esbuild": "^0.17.0",
-    "eslint": "^8.32.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.3",
-    "nano-staged": "^0.8.0",
-    "prettier": "^2.8.3",
-    "tsx": "^3.12.2",
-    "typescript": "^4.9.4"
-  },
-  "dependencies": {
-    "cac": "^6.7.14",
-    "chalk": "^5.2.0",
-    "current-git-branch": "^1.1.0",
-    "execa": "^6.1.0",
-    "git-needs-pull": "^2.1.0",
-    "ini": "^3.0.1",
-    "inquirer": "^9.1.4",
-    "is-git-added": "^1.0.2",
-    "is-git-repository": "^2.0.0",
-    "open": "^8.4.0",
-    "ora": "^6.1.2"
-  },
-  "nano-staged": {
-    "*.{ts,tsx,js,jsx,vue}": "eslint --fix",
-    "*.{ts,tsx,js,jsx,vue,less,css,md}": "prettier --write"
-  },
-  "files": [
-    "es",
-    "bin"
-  ],
   "keywords": [
     "git",
     "commit",
@@ -73,5 +23,53 @@
     "commit-message",
     "npm",
     "git-emoji"
-  ]
+  ],
+  "bin": {
+    "commit": "bin/index.js"
+  },
+  "files": [
+    "es",
+    "bin"
+  ],
+  "scripts": {
+    "build": "rm -rf es && tsx ./build.ts",
+    "lint:fix": "eslint --fix . && prettier --write .",
+    "postinstall": "simple-git-hooks",
+    "prepublishOnly": "npm run build",
+    "release": "bumpp && npm publish"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.6.3",
+    "cac": "^6.7.14",
+    "chalk": "^5.2.0",
+    "execa": "^7.1.1",
+    "git-needs-pull": "^2.1.0",
+    "ini": "^4.1.1",
+    "is-git-added": "^1.0.2",
+    "is-git-repository": "^2.0.0",
+    "open": "^9.1.0",
+    "ora": "^6.3.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.39.5",
+    "@types/ini": "^1.3.31",
+    "@types/node": "^20.3.1",
+    "bumpp": "^9.1.1",
+    "esbuild": "^0.18.2",
+    "nano-staged": "^0.8.0",
+    "prettier": "^2.8.8",
+    "simple-git-hooks": "^2.8.1",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.3"
+  },
+  "nano-staged": {
+    "*.{ts,tsx,js,jsx,vue}": "eslint --fix",
+    "*.{ts,tsx,js,jsx,vue,less,css,md}": "prettier --write"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx nano-staged"
+  }
 }

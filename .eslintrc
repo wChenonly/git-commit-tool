@@ -1,11 +1,6 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
-  "parserOptions": {
-    "project": "./tsconfig.json",
-    "ecmaVersion": 2020,
-    "sourceType": "module",
-    "createDefaultProgram": true
+  "extends": "@antfu",
+  "rules": {
+    "no-console": "off",
   }
 }
