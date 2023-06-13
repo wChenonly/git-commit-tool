@@ -18,9 +18,11 @@ export async function push(currentBranch: string) {
   try {
     await execa('git', ['push', 'origin', `${currentBranch}`])
     spinner.succeed(`${Log.info('git push 到仓库成功 💯💯💯')}`)
+    return true
   }
   catch (error) {
     spinner.fail(`${Log.info('代码推送失败,请手动git push 🫵')}`)
+    return false
   }
 }
 

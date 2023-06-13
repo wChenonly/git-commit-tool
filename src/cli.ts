@@ -5,7 +5,6 @@ import { Log, isExitAddFile, isGitNeedPull, isGitRep } from './utils/utils'
 import type { CommitConfig } from './commit/commitType'
 import { commitType } from './commit/commitType'
 import { commitTool, isOpenWindow } from './commit/commitInput'
-import { add } from './utils/git'
 
 const cli = cac('commit')
 
@@ -32,7 +31,6 @@ cli.commands = [
       spinner.succeed()
     }
 
-    await add()
     if (isExitAddFile()) {
       Log.error('暂存区为空,请先git add . 提交代码到暂存区')
       return
@@ -41,32 +39,6 @@ cli.commands = [
     const res = await commitTool(config)
     if (res)
       await isOpenWindow()
-
-    // commitTool(config)
-    //   .then(() => {
-
-    //     const openWindowResult = await isOpenWindow()
-    //     openWindowResult
-    //       .then((res) => {
-    //         if (res) {
-    //           open(getUrl())
-    //           Log.info('打开浏览器成功 🎉')
-    //           process.exit(0)
-    //         }
-    //         else {
-    //           Log.info('记得去仓库创建合并请求 😄')
-    //           process.exit(0)
-    //         }
-    //       })
-    //       .catch((err) => {
-    //         Log.error('打开浏览器失败,记得去仓库创建合并请求 😢', err, getUrl())
-    //         process.exit(1)
-    //       })
-    //   })
-    //   .catch((err) => {
-    //     Log.error('提交失败 😢', err)
-    //     process.exit(1)
-    //   })
   }),
 ]
 

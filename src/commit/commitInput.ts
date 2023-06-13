@@ -57,8 +57,10 @@ export async function commitTool(config: CommitConfig) {
     const isGerrit = await confirm({ message: '是否是gerrit仓库?', initialValue: false })
     cancel_(isGerrit, '别忘记手动推送代码到仓库 🫵')
     // push到gerrit仓库，因为gerrit refs审核
-    await push(isGerrit ? `refs/for/${pushBranch}` : pushBranch)
-    return true
+    const pushResult = await push(isGerrit ? `refs/for/${pushBranch}` : pushBranch)
+    if (pushResult)
+      return true
+    return false
   }
   else {
     Log.error('别忘记手动推送代码到仓库哦 🫵')
