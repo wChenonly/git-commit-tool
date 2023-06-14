@@ -35,7 +35,8 @@
   "scripts": {
     "dev": "nodemon -w './src/**/*.ts' -e .ts -x tsx ./build.ts",
     "build": "rm -rf es && tsx ./build.ts",
-    "lint:fix": "eslint --fix . && prettier --write .",
+    "lint:fix": "eslint --fix ./ --ext .vue,.js,.ts,.jsx,.tsx,.json ",
+    "format": "prettier --write .",
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
   },
