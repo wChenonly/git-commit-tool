@@ -32,6 +32,7 @@
     "bin"
   ],
   "scripts": {
+    "dev": "nodemon -w './src/**/*.ts' -e .ts -x tsx ./build.ts",
     "build": "rm -rf es && tsx ./build.ts",
     "lint:fix": "eslint --fix . && prettier --write .",
     "prepublishOnly": "npm run build",
@@ -59,6 +60,7 @@
     "bumpp": "^9.1.1",
     "esbuild": "^0.18.2",
     "nano-staged": "^0.8.0",
+    "nodemon": "^2.0.22",
     "prettier": "^2.8.8",
     "simple-git-hooks": "^2.8.1",
     "tsx": "^3.12.7",
