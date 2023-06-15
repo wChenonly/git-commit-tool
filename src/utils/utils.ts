@@ -1,6 +1,5 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import chalk from 'chalk'
 import isAdded from 'is-git-added'
 import isGit from 'is-git-repository'
 import needsPull from 'git-needs-pull'
@@ -20,19 +19,6 @@ export function isGitRep() {
 // 检查Git存储库是否需要拉取
 export function isGitNeedPull() {
   return needsPull()
-}
-
-// 控制台输出封装
-export const Log = {
-  info(...args: unknown[]) {
-    console.log(chalk.green(...args))
-  },
-  warn(...args: unknown[]) {
-    console.log(chalk.yellow(...args))
-  },
-  error(...args: unknown[]) {
-    console.log(chalk.bgRed(...args))
-  },
 }
 
 // 获取提交的信息

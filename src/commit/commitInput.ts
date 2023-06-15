@@ -1,8 +1,8 @@
-import chalk from 'chalk'
+import c from 'kleur'
 import { cancel, confirm, isCancel, select, text } from '@clack/prompts'
 import open from 'open'
-import { Log, getCommitMessage, getUrl } from '../utils/utils'
 import { commit, gitBranchName, push } from '../utils/git'
+import { getCommitMessage, getUrl } from '../utils/utils'
 import type { Commit, CommitConfig, CommitType } from './commitType'
 
 export async function commitTool(config: CommitConfig) {
@@ -29,7 +29,7 @@ export async function commitTool(config: CommitConfig) {
     placeholder: '如"修改了xxx函数","重构了xxx页面"等',
     validate(value) {
       if (!value)
-        return chalk.red.bold('本次修改不能为空 🚔🚔🚔')
+        return c.red().bold('本次修改不能为空 🚔🚔🚔')
     },
   })
 
@@ -38,8 +38,7 @@ export async function commitTool(config: CommitConfig) {
   const result: Commit = { type: `${selectValue.split(':')[0]}`, scope: scopeValue as string, subject: subjectValue as string }
 
   const message = getCommitMessage(result)
-
-  Log.info('本次提交的信息为:', chalk.bgGreen(message))
+  console.log('本次提交的信息为->>', c.green().bold().underline(`${message}`))
 
   const confirmCommit = await confirm({ message: '确认要提交本次改动?' })
   cancel_(confirmCommit)
@@ -63,7 +62,7 @@ export async function commitTool(config: CommitConfig) {
     return false
   }
   else {
-    Log.error('别忘记手动推送代码到仓库哦 🫵')
+    console.log(c.bgRed('别忘记手动推送代码到仓库哦 🫵'))
   }
 }
 
@@ -72,8 +71,8 @@ export async function isOpenWindow() {
   cancel_(isOpenWindow, '记得去仓库创建合并请求 🫵')
   if (isOpenWindow) {
     open(getUrl())
-    Log.info('打开浏览器成功 🎉🎉🎉')
-    process.exit(0)
+    console.log(c.green('打开浏览器成功 🎉🎉🎉'))
+    process.exit(1)
   }
 }
 
@@ -82,6 +81,6 @@ function cancel_(message: symbol | boolean | string, info?: string) {
     if (info)
       cancel(info)
     else cancel('取消提交')
-    process.exit(0)
+    process.exit(1)
   }
 }

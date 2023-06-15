@@ -1,5 +1,5 @@
 import { type BuildOptions, build } from 'esbuild'
-import chalk from 'chalk'
+import c from 'kleur'
 
 async function bundle() {
   const options: BuildOptions = {
@@ -11,16 +11,16 @@ async function bundle() {
     outdir: 'es',
     treeShaking: true,
     splitting: true,
-    external: ['chalk', 'is-git-repository', 'is-git-added', '@clack/prompts', 'execa', 'git-needs-pull', 'cac', 'ora', 'fs', 'path', 'ini', 'open'],
+    external: ['kleur', 'is-git-repository', 'is-git-added', '@clack/prompts', 'execa', 'git-needs-pull', 'cac', 'ora', 'fs', 'path', 'ini', 'open'],
     tsconfig: './tsconfig.json',
   }
 
   try {
     await build(options)
-    console.log(chalk.green('😊 Build success'))
+    console.log(c.green('😊 Build success'))
   }
   catch (error) {
-    console.log(chalk.red('😢 Build failed', error))
+    console.log(c.red(`'😢 Build failed ${error}`))
   }
 }
 
