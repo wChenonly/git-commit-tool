@@ -2,3 +2,4 @@ node_modules
 dist
 es
 yarn.lock
+pnpm-lock.yaml
