@@ -5,3 +5,4 @@ es
 .github
 bin
 instructions
+pnpm-lock.yaml
