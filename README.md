@@ -1,4 +1,4 @@
-# git-commit-tool
+# @wchenonly/git-commit-tool
 
 用交互式方法帮助您生成标准提交消息
 
@@ -9,7 +9,7 @@
 install with npm:
 
 ```bash
-npm install -g git-commit-tool
+npm install -g @wchenonly/git-commit-tool
 ```
 
 ## useage
@@ -25,7 +25,7 @@ npm install -g git-commit-tool
 
 ## 说明：gerrit 仓库 push 代码
 
-### gerrit 的规矩：https://gerrit-documentation.storage.googleapis.com/Documentation/3.5.1/concept-refs-for-namespace.html
+### gerrit 的规则：https://gerrit-documentation.storage.googleapis.com/Documentation/3.5.1/concept-refs-for-namespace.html
 
 ```javascript
 `git push <remote 名字> <本地分支的名字> : <远程库的名字>`
