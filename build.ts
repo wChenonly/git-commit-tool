@@ -14,14 +14,10 @@ async function bundle() {
     external: ['kleur', 'is-git-repository', 'is-git-added', '@clack/prompts', 'execa', 'git-needs-pull', 'cac', 'ora', 'fs', 'path', 'ini', 'open'],
     tsconfig: './tsconfig.json',
   }
-
-  try {
-    await build(options)
-    console.log(c.green('😊 Build success'))
-  }
-  catch (error) {
+  await build(options).catch((error) => {
     console.log(c.red(`'😢 Build failed ${error}`))
-  }
+  })
+  console.log(c.green('😊 Build success'))
 }
 
 bundle()
