@@ -2,7 +2,7 @@
   "name": "@wchenonly/git-commit-tool",
   "type": "module",
   "version": "1.1.21",
-  "packageManager": "pnpm@8.6.7",
+  "packageManager": "pnpm@8.6.8",
   "description": "use an interactive approach to help you generate standard submission messages",
   "author": "wChenonly",
   "license": "MIT",
@@ -57,11 +57,11 @@
     "ora": "^6.3.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.39.7",
+    "@antfu/eslint-config": "^0.39.8",
     "@types/ini": "^1.3.31",
     "@types/node": "^20.4.2",
     "bumpp": "^9.1.1",
-    "esbuild": "^0.18.12",
+    "esbuild": "^0.18.13",
     "nano-staged": "^0.8.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.0",
