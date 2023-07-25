@@ -1,3 +1,4 @@
+/* eslint-disable n/prefer-global/process */
 import { execa, execaSync } from 'execa'
 import ora from 'ora'
 import c from 'kleur'
