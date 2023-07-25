@@ -1,4 +1,3 @@
-/* eslint-disable n/prefer-global/process */
 import c from 'kleur'
 import { cancel, confirm, isCancel, select, text } from '@clack/prompts'
 import open from 'open'
