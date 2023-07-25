@@ -1,3 +1,4 @@
+/* eslint-disable n/prefer-global/process */
 import c from 'kleur'
 import { cancel, confirm, isCancel, select, text } from '@clack/prompts'
 import open from 'open'
@@ -70,7 +71,7 @@ export async function isOpenWindow() {
   const isOpenWindow = await confirm({ message: '是否自动打开仓库,创建合并请求?', initialValue: false })
   cancel_(isOpenWindow, '记得去仓库创建合并请求 🫵')
   if (isOpenWindow) {
-    open(getUrl())
+    open(await getUrl())
     console.log(c.green('打开浏览器成功 🎉🎉🎉'))
     process.exit(1)
   }

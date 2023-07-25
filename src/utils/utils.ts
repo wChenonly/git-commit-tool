@@ -1,9 +1,7 @@
-import fs from 'node:fs'
-import path from 'node:path'
 import isAdded from 'is-git-added'
 import isGit from 'is-git-repository'
 import needsPull from 'git-needs-pull'
-import ini from 'ini'
+import { execa } from 'execa'
 import type { Commit } from '../commit/commitType'
 
 // 检查是否存在暂存文件
@@ -32,8 +30,10 @@ export function getCommitMessage(info: Commit) {
   return message
 }
 
-export function getUrl(): string {
-  const configPath = path.resolve(process.cwd(), '.git/config')
-  const file = fs.readFileSync(configPath, 'utf8')
-  return ini.parse(file)['remote "origin"'].url.replace(/\.git$/, '')
+export async function getUrl(): Promise<string> {
+  const url = await execa('git', ['config', '--get', 'remote.origin.url']).then(res => res.stdout)
+
+  const _url = url.replace('.git', '').replace('.com:', '.com/').replace('git@', 'https://').trim()
+
+  return _url
 }
