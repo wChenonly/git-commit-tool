@@ -6,6 +6,7 @@ async function bundle() {
     format: 'esm',
     bundle: true,
     entryPoints: ['src/cli.ts'],
+    logLevel: 'info',
     minify: true,
     platform: 'node',
     outdir: 'es',
