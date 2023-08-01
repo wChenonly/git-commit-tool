@@ -12,8 +12,8 @@ const cli = cac('commit')
 // cli命令数组
 cli.commands = [
   cli.command('', '写完代码以后，终端输入-->  commit  <--然后尽情享受吧 🎉').action(async () => {
-    if (isGitRep()) {
-      console.log(c.bgRed('不是git仓库,请先切换到git仓库'))
+    if (!(await isGitRep())) {
+      console.log(c.bgRed('不是 git 仓库，请先切换到 git 仓库'))
       return
     }
     console.log(c.green('开始提交代码...'))
@@ -25,15 +25,15 @@ cli.commands = [
 
     if (isGitNeedPull()) {
       spinner.fail()
-      console.log(c.bgRed('有未更新的代码,请先git pull更新代码'))
+      console.log(c.bgRed('有未更新的代码，请先 git pull 更新代码'))
       return
     }
     else {
       spinner.succeed()
     }
 
-    if (isExitAddFile()) {
-      console.log(c.bgRed('暂存区为空,请先git add . 提交代码到暂存区'))
+    if (!(await isExitAddFile())) {
+      console.log(c.bgRed('暂存区为空，请先 git add . 提交代码到暂存区'))
       return
     }
 

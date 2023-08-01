@@ -24,23 +24,23 @@ export const commitType: Array<CommitType> = [
   },
   {
     key: '🚑 bugfix',
-    description: '修复bug',
+    description: '修复 bug',
   },
   {
     key: '💄 style',
-    description: '更新 UI 和样式文件',
+    description: '更新 UI',
   },
   {
     key: '🎨 format',
-    description: '改进代码结构/代码格式，不涉及代码逻辑',
+    description: '代码结构/格式，不涉及逻辑',
   },
   {
     key: '📝 docs',
-    description: '仅仅修改文档',
+    description: '仅修改文档',
   },
   {
     key: '🔨 refactor',
-    description: '代码重构,没有加新功能或者修复bug',
+    description: '代码重构，没有加新功能/修复 bug',
   },
   {
     key: '🚀 performance',
@@ -48,7 +48,7 @@ export const commitType: Array<CommitType> = [
   },
   {
     key: '✅ test',
-    description: '测试用例相关',
+    description: '测试相关',
   },
   {
     key: '👷 ci',

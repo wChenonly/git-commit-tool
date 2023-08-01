@@ -3,34 +3,29 @@ import ora from 'ora'
 import c from 'kleur'
 
 export async function add() {
-  const spinner = ora('git add 进行中').start()
+  const spinner = ora('git add ...').start()
   await execa('git', ['add', 'package.json'])
-  spinner.succeed(`${c.green('git add 到暂存区成功 🤥🤥🤥')}`)
+  spinner.succeed(`${c.green('git add succeed 🤥🤥🤥')}`)
 }
 export async function commit(message: string) {
-  const spinner = ora('git commit 进行中').start()
+  const spinner = ora('git commit ...').start()
   await execa('git', ['commit', '-m', message], { stdio: 'inherit' })
-  spinner.succeed(`${c.green('git commit 到本地成功 🍺🍺🍺')}`)
+  spinner.succeed(`${c.green('git commit succeed 🍺🍺🍺')}`)
 }
 
 export async function push(currentBranch: string) {
-  const spinner = ora('git push 进行中').start()
+  const spinner = ora('git push ...').start()
   try {
     await execa('git', ['push', 'origin', `${currentBranch}`])
-    spinner.succeed(`${c.green('git push 到仓库成功 💯💯💯')}`)
+    spinner.succeed(`${c.green('git push succeed 💯💯💯')}`)
     return true
   }
   catch (error) {
-    spinner.fail(`${c.green('代码推送失败,请手动git push 🫵')}`)
+    spinner.fail(`${c.green('推送失败，请手动 git push 🫵🫵🫵')}`)
     return false
   }
 }
 
 export function gitBranchName() {
-  const currentBranch = execaSync('git', ['branch', '--show-current']).stdout
-  if (!currentBranch) {
-    console.log(c.bgRed('获取当前分支失败, 请检查git是否安装 🫵🫵🫵'))
-    process.exit(1)
-  }
-  return currentBranch
+  return execaSync('git', ['branch', '--show-current']).stdout
 }
