@@ -13,16 +13,10 @@ dependencies:
     version: 6.7.14
   execa:
     specifier: ^7.1.1
-    version: 7.1.1
+    version: 7.2.0
   git-needs-pull:
     specifier: ^2.1.0
     version: 2.1.0
-  is-git-added:
-    specifier: ^1.0.2
-    version: 1.0.2
-  is-git-repository:
-    specifier: ^2.0.0
-    version: 2.0.0
   kleur:
     specifier: ^4.1.5
     version: 4.1.5
@@ -1082,7 +1076,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.5.3
+      semver: 7.5.4
     dev: true
 
   /bumpp@9.1.1:
@@ -1322,7 +1316,7 @@ packages:
     dependencies:
       bundle-name: 3.0.0
       default-browser-id: 3.0.0
-      execa: 7.1.1
+      execa: 7.2.0
       titleize: 3.0.0
     dev: false
 
@@ -1895,8 +1889,8 @@ packages:
       strip-final-newline: 2.0.0
     dev: false
 
-  /execa@7.1.1:
-    resolution: {integrity: sha512-wH0eMf/UXckdUYnO21+HDztteVv05rq2GXksxT4fCGeHkBhw1DROXh40wcjMcRqDOWE7iPJ4n3M7e2+YFP+76Q==}
+  /execa@7.2.0:
+    resolution: {integrity: sha512-UduyVP7TLB5IcAQl+OzLyLcS/l32W/GLg+AhHJ+ow40FOk2U3SAllPwR44v4vmdFwIWqpdwxxpQbF1n5ta9seA==}
     engines: {node: ^14.18.0 || ^16.14.0 || >=18.0.0}
     dependencies:
       cross-spawn: 7.0.3
@@ -2272,25 +2266,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /is-git-added@1.0.2:
-    resolution: {integrity: sha512-LOPSLxgw7EY7M/bu+FzOkWxGaBfkBI6jS6d1AwDB6fSIcMCjnB/eD8ksucJA+fdn4TtiMCquMr+Cs8qZVaNM1Q==}
-    dependencies:
-      execa: 0.6.3
-      is-git-repository: 1.1.1
-    dev: false
-
   /is-git-repository@1.1.1:
     resolution: {integrity: sha512-hxLpJytJnIZ5Og5QsxSkzmb8Qx8rGau9bio1JN/QtXcGEFuSsQYau0IiqlsCwftsfVYjF1mOq6uLdmwNSspgpA==}
     dependencies:
       execa: 0.6.3
       path-is-absolute: 1.0.1
-    dev: false
-
-  /is-git-repository@2.0.0:
-    resolution: {integrity: sha512-HDO50CG5suIAcmqG4F1buqVXEZRPn+RaXIn9pFKq/947FBo2bCRwK7ZluEVZOy99a4IQyqsjbKEpAiOXCccOHQ==}
-    dependencies:
-      execa: 4.1.0
-      is-absolute: 1.0.0
     dev: false
 
   /is-glob@4.0.3:
@@ -3118,7 +3098,7 @@ packages:
     resolution: {integrity: sha512-a2B9Y0KlNXl9u/vsW6sTIu9vGEpfKu2wRV6l1H3XEas/0gUIzGzBoP/IouTcUQbm9JWZLH3COxyn03TYlFax6w==}
     engines: {node: '>=10'}
     dependencies:
-      semver: 7.5.3
+      semver: 7.5.4
     dev: true
 
   /sisteransi@1.0.5:
