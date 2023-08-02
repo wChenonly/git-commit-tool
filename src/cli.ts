@@ -23,7 +23,7 @@ cli.commands = [
 
     const spinner = ora({ color: 'green', text: '正在检查是否有未更新代码' }).start()
 
-    if (isGitNeedPull()) {
+    if (!(await isGitNeedPull())) {
       spinner.fail(c.bgRed('有未更新的代码，请先 git pull 更新代码'))
       return
     }

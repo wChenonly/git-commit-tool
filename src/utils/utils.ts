@@ -1,6 +1,6 @@
-import needsPull from 'git-needs-pull'
 import { execa } from 'execa'
 import type { Commit } from '../commit/commitType'
+import { gitBranchName } from './git'
 
 // 检查是否存在暂存文件
 export async function isExitAddFile() {
@@ -25,8 +25,19 @@ export async function isGitRep() {
 }
 
 // 检查Git存储库是否需要拉取
-export function isGitNeedPull() {
-  return needsPull()
+export async function isGitNeedPull() {
+  try {
+    const branch = gitBranchName()
+    const LOCAL = await execa('git', ['log', `${branch}`, '-n 1 --pretty=format:"%H"']).then(res => res.stdout)
+    const REMOTE = await execa('git', ['log', `remotes/origin/${branch}`, '-n 1 --pretty=format:"%H"']).then(res => res.stdout)
+
+    if (LOCAL === REMOTE)
+      return true
+    return false
+  }
+  catch (error) {
+    return false
+  }
 }
 
 // 获取提交的信息

@@ -23,5 +23,5 @@ export async function push(currentBranch: string) {
 }
 
 export function gitBranchName() {
-  return execaSync('git', ['branch', '--show-current']).stdout
+  return execaSync('git', ['branch', '--show-current']).stdout.trim()
 }
