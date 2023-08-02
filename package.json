@@ -1,7 +1,7 @@
 {
   "name": "@wchenonly/git-commit-tool",
   "type": "module",
-  "version": "1.1.24",
+  "version": "1.1.25",
   "packageManager": "pnpm@8.6.11",
   "description": "use an interactive approach to help you generate standard submission messages",
   "author": "wChenonly",
