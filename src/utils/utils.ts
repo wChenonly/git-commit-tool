@@ -47,3 +47,6 @@ export async function getUrl(): Promise<string> {
 
   return _url
 }
+
+// 空格，防止渲染不全
+export const HAND_ICON = '🫵  🫵  🫵  '

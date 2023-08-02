@@ -13,10 +13,10 @@ const cli = cac('commit')
 cli.commands = [
   cli.command('', '写完代码以后，终端输入-->  commit  <--然后尽情享受吧 🎉').action(async () => {
     if (!(await isGitRep())) {
+      console.log()
       console.log(c.bgRed('不是 git 仓库，请先切换到 git 仓库'))
       return
     }
-    console.log(c.green('开始提交代码...'))
 
     const config: CommitConfig = {}
     config.types = commitType
@@ -24,15 +24,15 @@ cli.commands = [
     const spinner = ora({ color: 'green', text: '正在检查是否有未更新代码' }).start()
 
     if (isGitNeedPull()) {
-      spinner.fail()
-      console.log(c.bgRed('有未更新的代码，请先 git pull 更新代码'))
+      spinner.fail(c.bgRed('有未更新的代码，请先 git pull 更新代码'))
       return
     }
     else {
-      spinner.succeed()
+      spinner.succeed(c.green('提交代码...'))
     }
 
     if (!(await isExitAddFile())) {
+      console.log()
       console.log(c.bgRed('暂存区为空，请先 git add . 提交代码到暂存区'))
       return
     }
