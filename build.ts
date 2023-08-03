@@ -12,7 +12,7 @@ async function bundle() {
     outdir: 'es',
     treeShaking: true,
     splitting: true,
-    external: ['kleur', '@clack/prompts', 'execa', 'git-needs-pull', 'cac', 'ora', 'fs', 'path', 'open'],
+    external: ['kleur', '@clack/prompts', 'execa', 'cac', 'ora', 'open'],
     tsconfig: './tsconfig.json',
   }
   await build(options).catch((error) => {
