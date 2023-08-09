@@ -38,7 +38,6 @@
     "lint:fix": "eslint --fix ./ --ext .vue,.js,.ts,.jsx,.tsx,.json ",
     "format": "prettier --write .",
     "prepublishOnly": "npm run build",
-    "postinstall": "npx simple-git-hooks",
     "release": "bumpp && npm publish"
   },
   "publishConfig": {
