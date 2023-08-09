@@ -2,7 +2,7 @@
   "name": "@wchenonly/git-commit-tool",
   "type": "module",
   "version": "1.1.26",
-  "packageManager": "pnpm@8.6.11",
+  "packageManager": "pnpm@8.6.12",
   "description": "use an interactive approach to help you generate standard submission messages",
   "author": "wChenonly",
   "license": "MIT",
@@ -38,7 +38,7 @@
     "lint:fix": "eslint --fix ./ --ext .vue,.js,.ts,.jsx,.tsx,.json ",
     "format": "prettier --write .",
     "prepublishOnly": "npm run build",
-    "postinstall": "simple-git-hooks",
+    "postinstall": "npx simple-git-hooks",
     "release": "bumpp && npm publish"
   },
   "publishConfig": {
@@ -54,10 +54,10 @@
     "ora": "^7.0.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.40.0",
-    "@types/node": "^20.4.6",
+    "@antfu/eslint-config": "^0.40.2",
+    "@types/node": "^20.4.9",
     "bumpp": "^9.1.1",
-    "esbuild": "^0.18.17",
+    "esbuild": "^0.19.0",
     "nano-staged": "^0.8.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.1",
