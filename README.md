@@ -19,9 +19,9 @@ npm install -g @wchenonly/git-commit-tool
 尽情享受吧 🎉🎉🎉
 ```
 
-![](./instructions/commit.svg)
+[![asciicast](https://asciinema.org/a/HFkZMiWVydq6liKC47M3L2aNE.svg)](https://asciinema.org/a/HFkZMiWVydq6liKC47M3L2aNE)
 
-使用 [svg-term-cli](https://github.com/marionebl/svg-term-cli) 生成。
+使用 [asciinema](https://asciinema.org/) 生成。
 
 ## 说明：gerrit 仓库 push 代码
 
