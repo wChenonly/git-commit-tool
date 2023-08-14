@@ -45,7 +45,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@clack/prompts": "^0.6.3",
+    "@clack/prompts": "^0.7.0",
     "cac": "^6.7.14",
     "execa": "^7.2.0",
     "kleur": "^4.1.5",
