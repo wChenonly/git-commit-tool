@@ -119,7 +119,7 @@ packages:
       '@antfu/eslint-config-basic': 0.40.2(@typescript-eslint/eslint-plugin@6.3.0)(@typescript-eslint/parser@6.3.0)(eslint@8.45.0)(typescript@5.1.6)
       '@antfu/eslint-config-ts': 0.40.2(eslint@8.45.0)(typescript@5.1.6)
       eslint: 8.45.0
-      eslint-plugin-vue: 9.16.1(eslint@8.45.0)
+      eslint-plugin-vue: 9.17.0(eslint@8.45.0)
       local-pkg: 0.4.3
     transitivePeerDependencies:
       - '@typescript-eslint/eslint-plugin'
@@ -147,7 +147,7 @@ packages:
       eslint-plugin-n: 16.0.1(eslint@8.45.0)
       eslint-plugin-promise: 6.1.1(eslint@8.45.0)
       eslint-plugin-unicorn: 48.0.1(eslint@8.45.0)
-      eslint-plugin-vue: 9.16.1(eslint@8.45.0)
+      eslint-plugin-vue: 9.17.0(eslint@8.45.0)
       eslint-plugin-yml: 1.8.0(eslint@8.45.0)
       jsonc-eslint-parser: 2.3.0
       yaml-eslint-parser: 1.2.2
@@ -1662,8 +1662,8 @@ packages:
       eslint-rule-composer: 0.3.0
     dev: true
 
-  /eslint-plugin-vue@9.16.1(eslint@8.45.0):
-    resolution: {integrity: sha512-2FtnTqazA6aYONfDuOZTk0QzwhAwi7Z4+uJ7+GHeGxcKapjqWlDsRWDenvyG/utyOfAS5bVRmAG3cEWiYEz2bA==}
+  /eslint-plugin-vue@9.17.0(eslint@8.45.0):
+    resolution: {integrity: sha512-r7Bp79pxQk9I5XDP0k2dpUC7Ots3OSWgvGZNu3BxmKK6Zg7NgVtcOB6OCna5Kb9oQwJPl5hq183WD0SY5tZtIQ==}
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
