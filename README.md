@@ -19,13 +19,13 @@ npm install -g @wchenonly/git-commit-tool
 尽情享受吧 🎉🎉🎉
 ```
 
-[![asciicast](https://asciinema.org/a/HFkZMiWVydq6liKC47M3L2aNE.svg)](https://asciinema.org/a/HFkZMiWVydq6liKC47M3L2aNE)
+![demo](./demo/demo.gif)
 
-使用 [asciinema](https://asciinema.org/) 生成。
+使用 [t-rec](https://github.com/sassman/t-rec-rs) 生成。
 
-## 说明：gerrit 仓库 push 代码
+## 说明：gerrit push 代码
 
-### gerrit 的规则：https://gerrit-documentation.storage.googleapis.com/Documentation/3.5.1/concept-refs-for-namespace.html
+### [gerrit 的规则](https://gerrit-documentation.storage.googleapis.com/Documentation/3.5.1/concept-refs-for-namespace.html)
 
 ```javascript
 `git push <remote 名字> <本地分支的名字> : <远程库的名字>`
