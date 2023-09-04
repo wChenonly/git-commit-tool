@@ -30,7 +30,7 @@ devDependencies:
     version: 0.41.0(eslint@8.45.0)(typescript@5.2.2)
   '@types/node':
     specifier: ^20.5.7
-    version: 20.5.7
+    version: 20.5.9
   bumpp:
     specifier: ^9.2.0
     version: 9.2.0
@@ -712,8 +712,8 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
-  /@types/node@20.5.7:
-    resolution: {integrity: sha512-dP7f3LdZIysZnmvP3ANJYTSwg+wLLl8p7RqniVlV7j+oXSXAbt9h0WIBFmJy5inWZoX9wZN6eXx+YXd9Rh3RBA==}
+  /@types/node@20.5.9:
+    resolution: {integrity: sha512-PcGNd//40kHAS3sTlzKB9C9XL4K0sTup8nbG5lC14kzEteTNuAFh9u5nA0o5TWnSG2r/JNPRXFVcHJIIeRlmqQ==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
