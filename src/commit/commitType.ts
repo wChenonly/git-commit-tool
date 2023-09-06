@@ -15,24 +15,20 @@ export interface CommitConfig {
 
 export const commitType: Array<CommitType> = [
   {
-    key: '🎉 init',
-    description: '初次提交/初始化项目',
+    key: '🚑 fix',
+    description: 'bug 修复',
   },
   {
-    key: '💥 feature',
-    description: '引入新功能',
+    key: '💥 feat',
+    description: '新增功能',
   },
   {
-    key: '🚑 bugfix',
-    description: '修复 bug',
+    key: '👻 chore',
+    description: '日常事务',
   },
   {
     key: '💄 style',
-    description: '更新 UI',
-  },
-  {
-    key: '🎨 format',
-    description: '代码结构/格式，不涉及逻辑',
+    description: '样式，格式，不影响代码逻辑的',
   },
   {
     key: '📝 docs',
@@ -43,8 +39,8 @@ export const commitType: Array<CommitType> = [
     description: '代码重构，没有加新功能/修复 bug',
   },
   {
-    key: '🚀 performance',
-    description: '优化相关，如提升性能、体验',
+    key: '🚀 perf',
+    description: '性能优化',
   },
   {
     key: '✅ test',
@@ -53,6 +49,14 @@ export const commitType: Array<CommitType> = [
   {
     key: '👷 ci',
     description: '配置相关/依赖相关/打包相关等',
+  },
+  {
+    key: '🔙 revert',
+    description: '回退代码',
+  },
+  {
+    key: '🎉 init',
+    description: '初始化项目',
   },
 ]
 

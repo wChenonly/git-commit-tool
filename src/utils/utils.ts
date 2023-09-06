@@ -42,7 +42,7 @@ export async function isGitNeedPull() {
 
 // 获取提交的信息
 export function getCommitMessage(info: Commit) {
-  let message = `${info.type}`
+  let message = info.type.split(' ')[1]
 
   if (info.scope)
     message += `(${info.scope}): ${info.subject}`
