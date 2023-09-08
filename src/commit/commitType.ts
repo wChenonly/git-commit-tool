@@ -54,10 +54,6 @@ export const commitType: Array<CommitType> = [
     key: '🔙 revert',
     description: '回退代码',
   },
-  {
-    key: '🎉 init',
-    description: '初始化项目',
-  },
 ]
 
 export default commitType
