@@ -6,7 +6,7 @@ import { HAND_ICON } from './utils'
 export async function commit(message: string) {
   const spinner = ora({ text: 'git commit ...', stream: process.stdout }).start()
   await execa('git', ['commit', '-m', message], { stdio: 'inherit' }).catch(() => {
-    spinner.fail(`${c.bgRed('请修复 lint 错误')}`)
+    spinner.fail(`${c.bgRed('请先修复错误')}`)
     process.exit(1)
   })
   spinner.succeed(`${c.green('git commit succeed 🍺 🍺 🍺')}`)
