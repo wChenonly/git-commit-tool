@@ -1,4 +1,4 @@
-import { execa } from 'execa'
+import { $, execa } from 'execa'
 import type { Commit } from '../commit/commitType'
 import { gitBranchName } from './git'
 
@@ -26,8 +26,9 @@ export async function isGitRep() {
 
 // 检查Git存储库是否需要拉取
 export async function isGitNeedPull() {
+  const branch = gitBranchName()
+
   try {
-    const branch = gitBranchName()
     const LOCAL = await execa('git', ['log', `${branch}`, '-n 1 --pretty=format:"%H"']).then(res => res.stdout)
     const REMOTE = await execa('git', ['log', `remotes/origin/${branch}`, '-n 1 --pretty=format:"%H"']).then(res => res.stdout)
 
@@ -36,6 +37,10 @@ export async function isGitNeedPull() {
     return false
   }
   catch (error) {
+    const { stdout } = await $`git branch -r --list origin/${branch}`
+    if (!stdout)
+      return true
+
     return false
   }
 }
