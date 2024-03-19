@@ -2,7 +2,7 @@
   "name": "@wchenonly/git-commit-tool",
   "type": "module",
   "version": "1.1.33",
-  "packageManager": "pnpm@8.15.3",
+  "packageManager": "pnpm@8.15.5",
   "description": "use an interactive approach to help you generate standard submission messages",
   "author": "wChenonly",
   "license": "MIT",
@@ -29,14 +29,14 @@
     "commit": "bin/index.js"
   },
   "files": [
-    "es",
-    "bin"
+    "bin",
+    "es"
   ],
   "scripts": {
     "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0",
     "dev": "nodemon -w './src/**/*.ts' -e .ts -x tsx ./build.ts",
     "build": "rm -rf es && tsx ./build.ts",
-    "lint:fix": "eslint --fix ./ --ext .vue,.js,.ts,.jsx,.tsx,.json ",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "prepublishOnly": "npm run build",
     "release": "bumpp && npm publish"
@@ -50,26 +50,26 @@
     "cac": "^6.7.14",
     "execa": "^8.0.1",
     "kleur": "^4.1.5",
-    "open": "^10.0.3",
+    "open": "^10.1.0",
     "ora": "^8.0.1"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.6.4",
-    "@types/node": "^20.11.19",
-    "bumpp": "^9.3.0",
+    "@antfu/eslint-config": "^2.8.3",
+    "@types/node": "^20.11.29",
+    "bumpp": "^9.4.0",
     "conventional-changelog": "^5.1.0",
     "conventional-changelog-cli": "^4.1.0",
     "conventional-changelog-custom-config": "^0.3.1",
-    "esbuild": "^0.20.1",
+    "esbuild": "^0.20.2",
     "nano-staged": "^0.8.0",
-    "nodemon": "^3.0.3",
+    "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
-    "simple-git-hooks": "^2.9.0",
+    "simple-git-hooks": "^2.11.0",
     "tsx": "^4.7.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "nano-staged": {
-    "*.{ts,tsx,js,jsx,vue}": "eslint --fix",
+    "*.{ts,tsx,js,jsx,vue}": "eslint . --fix",
     "*.{ts,tsx,js,jsx,vue,less,css,md}": "prettier --write"
   },
   "simple-git-hooks": {

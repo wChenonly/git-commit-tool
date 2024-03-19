@@ -1,3 +1,4 @@
+import process from 'node:process'
 import c from 'kleur'
 import { cancel, confirm, isCancel, select, text } from '@clack/prompts'
 import open from 'open'
@@ -14,6 +15,7 @@ export async function commitTool(config: CommitConfig) {
     return { value: `${item.key}: ${item.description}`, label: `${item.key}: ${item.description}` }
   })
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const selectValue: any = await select({
     message: '请选择本次提交的修改类型:',
     options: types,
@@ -64,10 +66,9 @@ export async function commitTool(config: CommitConfig) {
       return true
     return false
   }
-  else {
-    console.log()
-    console.log(c.bgRed(`${noPush}`))
-  }
+
+  console.log()
+  console.log(c.bgRed(`${noPush}`))
 }
 
 export async function isOpenWindow() {

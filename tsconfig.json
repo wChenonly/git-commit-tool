@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "rootDir": "./",
-    "types": ["node"],
     "target": "ESNext",
+    "rootDir": "./",
     "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "strict": true,
     "declaration": true,
     "outDir": "es",
-    "strict": true,
     "esModuleInterop": true,
-    "pretty": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true
+    "pretty": true
   }
 }

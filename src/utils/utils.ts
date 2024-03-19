@@ -29,9 +29,8 @@ export async function isGitNeedPull() {
   const branch = gitBranchName()
 
   try {
-    const LOCAL = await execa('git', ['log', `${branch}`, '-n 1 --pretty=format:"%H"']).then(res => res.stdout)
-    const REMOTE = await execa('git', ['log', `remotes/origin/${branch}`, '-n 1 --pretty=format:"%H"']).then(res => res.stdout)
-
+    const LOCAL = await execa('git', ['log', '--pretty=format:"%H"', '-n 1', `${branch}`]).then(res => res.stdout)
+    const REMOTE = await execa('git', ['log', '--pretty=format:"%H"', '-n 1', `remotes/origin/${branch}`]).then(res => res.stdout)
     if (LOCAL === REMOTE)
       return true
     return false
@@ -40,7 +39,6 @@ export async function isGitNeedPull() {
     const { stdout } = await $`git branch -r --list origin/${branch}`
     if (!stdout)
       return true
-
     return false
   }
 }

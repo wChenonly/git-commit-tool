@@ -27,9 +27,7 @@ cli.commands = [
       spinner.fail(c.bgRed('有未更新的代码，请先 git pull 更新代码'))
       return
     }
-    else {
-      spinner.succeed(c.green('提交代码...'))
-    }
+    spinner.succeed(c.green('提交代码...'))
 
     if (!(await isExitAddFile())) {
       console.log()

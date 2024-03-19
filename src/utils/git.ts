@@ -1,3 +1,4 @@
+import process from 'node:process'
 import { execa, execaSync } from 'execa'
 import ora from 'ora'
 import c from 'kleur'
